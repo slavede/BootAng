@@ -26,7 +26,7 @@
     <div class="header">
       <ul class="nav nav-pills pull-right">
         <li ng-class="{active : tabActive.home}"><a ng-href="#/home">Home</a></li>
-        <li ng-class="{active : tabActive.menu}"><a ng-href="#/about">Menu Component</a></li>
+        <li ng-class="{active : tabActive.menu}"><a ng-href="#/menu">Menu Component</a></li>
         <li><a ng-href="#">Contact</a></li>
       </ul>
       <h3 class="text-muted">BootAng</h3>
@@ -53,13 +53,14 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/menu.js"></script>
         <!-- endbuild -->
 </body>
 </html>
