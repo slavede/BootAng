@@ -165,6 +165,19 @@ module.exports = function (grunt) {
       }
     },
 
+    wiredep: {
+
+      target: {
+
+      // Point to the files that should be updated when
+      // you run `grunt wiredep`
+        src: [
+          'app/index.html'
+        ],
+      }
+    },
+
+
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -392,4 +405,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+
+  grunt.loadNpmTasks('grunt-wiredep');
 };
