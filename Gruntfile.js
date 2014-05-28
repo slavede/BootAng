@@ -25,6 +25,14 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    less: {
+      development: {
+        files: {
+          '<%= yeoman.app %>/styles/app.css': '<%= yeoman.app %>/styles/app.less'
+        }
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -46,6 +54,13 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      less: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['less'],
+        options: {
+          livereload: true
+        }
+      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -55,6 +70,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}/{,*/}*.tpl',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -365,6 +381,7 @@ module.exports = function (grunt) {
       'bowerInstall',
       'concurrent:server',
       'autoprefixer',
+      'less',
       'connect:livereload',
       'watch'
     ]);
@@ -408,4 +425,5 @@ module.exports = function (grunt) {
 
 
   grunt.loadNpmTasks('grunt-wiredep');
+  grunt.loadNpmTasks('grunt-contrib-less');
 };

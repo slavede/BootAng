@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-	.module('bootAngApp', ['ngRoute'])
+	.module('BootAng', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
 			.when('/home', {
