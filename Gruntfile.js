@@ -335,6 +335,19 @@ module.exports = function (grunt) {
       ]
     },
 
+    ngtemplates:  {
+      app:        {
+        src:      '<%= yeoman.app %>/views/directives/*.tpl',
+        dest:     'dist/templates.js',
+        options:      {
+          bootstrap:  function(module, script) {
+            return "angular.module('BootAng').run(['$templateCache', function($templateCache) { \n" + script + "}]);";
+          }
+        }
+      }
+    },
+
+
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
@@ -417,6 +430,10 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('buildTemplates', [
+    'ngtemplates'
+  ]);
+
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
@@ -426,4 +443,5 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-angular-templates');
 };
