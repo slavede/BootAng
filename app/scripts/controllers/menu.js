@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('BootAng')
+angular.module('BootAngDisplayApp')
 	.controller('MenuCtrl', function ($scope) {
 		$scope.bootangOptions = {
 			items : [
