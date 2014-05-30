@@ -366,11 +366,12 @@ module.exports = function (grunt) {
 
     ngtemplates:  {
       app:        {
-        src:      '<%= yeoman.app %>/views/directives/*.tpl',
+        cwd : '<%= yeoman.app %>',
+        src:      'views/directives/*.tpl',
         dest:     '<%= yeoman.distBootAng %>/tmp/templates/templates.js',
         options:      {
           bootstrap:  function(module, script) {
-            script = script.replace('app/views/', 'views/');
+            // script = script.replace('app/views/', 'views/');
             return "angular.module('BootAng').run(['$templateCache', function($templateCache) { \n" + script + "}]);";
           },
         }
