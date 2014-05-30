@@ -370,8 +370,9 @@ module.exports = function (grunt) {
         dest:     '<%= yeoman.distBootAng %>/tmp/templates/templates.js',
         options:      {
           bootstrap:  function(module, script) {
+            script = script.replace('app/views/', 'views/');
             return "angular.module('BootAng').run(['$templateCache', function($templateCache) { \n" + script + "}]);";
-          }
+          },
         }
       }
     },
@@ -402,8 +403,9 @@ module.exports = function (grunt) {
         files : {
           '<%= yeoman.distBootAng %>/dist/bootang.min.js' : [
             '<%= yeoman.distBootAng %>/tmp/app/scripts/bootang.js',
-            '<%= yeoman.distBootAng %>/tmp/app/scripts/directives/*.js',
             '<%= yeoman.distBootAng %>/tmp/templates/*.js',
+            '<%= yeoman.distBootAng %>/tmp/app/scripts/directives/*.js',
+            
             
             '!<%= yeoman.distBootAng %>/tmp/app/scripts/app.js'
           ]
