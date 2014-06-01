@@ -235,11 +235,11 @@ module.exports = function (grunt) {
       },
       distBootAng : {
         options: {
-          banner: '/* Bootang minified css file */',
-          files: {
-            '<%= yeoman.distBootAng %>/dist/bootang.min.css': ['<%= yeoman.app %>/styles/*.css']
-          }
+          banner: '/* Bootang minified css file */'
         },
+        files: {
+          '<%= yeoman.distBootAng %>/dist/bootang.min.css': ['<%= yeoman.app %>/styles/bootang-*.css']
+        }
       }
     },
 
@@ -337,9 +337,13 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }]
       },
-      distBootangTestApp : {
+      distBootangTestAppJs : {
         src : '<%= yeoman.distBootAng %>/dist/bootang.min.js',
         dest : '<%= yeoman.app %>/scripts/bootang.min.js',
+      },
+      distBootangTestAppCss : {
+        src : '<%= yeoman.distBootAng %>/dist/bootang.min.css',
+        dest : '<%= yeoman.app %>/styles/bootang.min.css',
       },
       styles: {
         expand: true,
@@ -481,7 +485,8 @@ module.exports = function (grunt) {
     'uglify:distBootAng', // uglify js
     'cssmin:distBootAng', // minify css
     'clean:distBootAng', // clean dist_bootang/dist/* and dist_bootang/tmp/*
-    'copy:distBootangTestApp', // copy bootang.min.js into testing app
+    'copy:distBootangTestAppJs', // copy bootang.min.js into testing app
+    'copy:distBootangTestAppCss', // copy bootang.min.css into testing app
     'connect:livereload',
     'watch'
   ]);
