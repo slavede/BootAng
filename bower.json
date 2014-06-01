@@ -2,7 +2,7 @@
   "name": "BootAng",
   "version": "0.0.1",
   "main": ["dist_bootang/dist/bootang.min.css", "dist_bootang/dist/bootang.min.js"],
-  "ignore" : ["app/*", "dist/*", "dist_bootang/tmp", "node/modules/*", "test/*", "."],
+  "ignore" : ["*", "!dist_bootang/dist/bootang.min.css", "!dist_bootang/dist/bootang.min.js"],
   "dependencies": {
     "angular": "1.2.15",
     "json3": "~3.2.6",
