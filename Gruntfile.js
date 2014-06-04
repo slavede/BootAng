@@ -250,12 +250,12 @@ module.exports = function (grunt) {
       distBootAng : {
         files : {
           '<%= yeoman.dist %>/bootang.min.js' : [
-            '<%= yeoman.distBootAng %>/tmp/app/scripts/bootang.js',
+            '<%= yeoman.distBootAng %>/tmp/src/scripts/bootang.js',
             '<%= yeoman.distBootAng %>/tmp/templates/*.js',
-            '<%= yeoman.distBootAng %>/tmp/app/scripts/directives/*.js',
+            '<%= yeoman.distBootAng %>/tmp/src/scripts/directives/*.js',
             
             
-            '!<%= yeoman.distBootAng %>/tmp/app/scripts/app.js'
+            '!<%= yeoman.distBootAng %>/tmp/src/scripts/app.js'
           ]
         }
       }
