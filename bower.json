@@ -4,11 +4,8 @@
   "main": ["/dist/bootang.min.css", "/dist/bootang.min.js"],
   "ignore" : ["*", "!/dist/bootang.min.css", "!/dist/bootang.min.js"],
   "dependencies": {
-    "angular": "1.2.15",
-    "json3": "~3.2.6",
-    "es5-shim": "~2.1.0",
-    "angular-route": "~1.2.16",
-    "bootstrap": "~3.1.1"
+    "angular": ">=1.2.15",
+    "bootstrap": ">=3.1.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
