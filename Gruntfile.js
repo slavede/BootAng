@@ -21,95 +21,9 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'app',
       dist: 'dist',
-      distBootAng : 'dist_bootang'
-    },
-
-    less: {
-      development: {
-        files: {
-          '<%= yeoman.app %>/styles/app.css': '<%= yeoman.app %>/styles/app.less'
-        }
-      }
-    },
-
-    // Watches files for changes and runs tasks based on the changed files
-    watch: {
-      bower: {
-        files: ['bower.json'],
-        tasks: ['bowerInstall']
-      },
-      js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
-        options: {
-          livereload: true
-        }
-      },
-      jsTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
-      },
-      styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
-      },
-      less: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
-        tasks: ['less'],
-        options: {
-          livereload: true
-        }
-      },
-      gruntfile: {
-        files: ['Gruntfile.js']
-      },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '<%= yeoman.app %>/{,*/}/{,*/}*.tpl',
-          '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      }
-    },
-
-    // The actual grunt server settings
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      livereload: {
-        options: {
-          open: true,
-          base: [
-            '.tmp',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          base: [
-            '.tmp',
-            'test',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
-      dist: {
-        options: {
-          base: '<%= yeoman.dist %>'
-        }
-      }
+      distBootAng : 'dist_bootang',
+      src : 'src'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -120,7 +34,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.src %>/scripts/{,*/}*.js'
       ],
       test: {
         options: {
@@ -144,7 +58,7 @@ module.exports = function (grunt) {
       },
       server: '.tmp',
       distBootAng : {
-        src : ['<%= yeoman.distBootAng %>/tmp/*']
+        src : ['<%= yeoman.distBootAng %>/']
       }
     },
 
@@ -166,8 +80,8 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     bowerInstall: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
-        ignorePath: '<%= yeoman.app %>/'
+        src: ['<%= yeoman.src %>/index.html'],
+        ignorePath: '<%= yeoman.src %>/'
       }
     },
 
@@ -185,60 +99,14 @@ module.exports = function (grunt) {
       }
     },
 
-    wiredep: {
-
-      target: {
-
-      // Point to the files that should be updated when
-      // you run `grunt wiredep`
-        src: [
-          'app/index.html'
-        ],
-      }
-    },
-
-
-    // Reads HTML for usemin blocks to enable smart builds that automatically
-    // concat, minify and revision files. Creates configurations in memory so
-    // additional tasks can operate on them
-    useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin:dist']
-            },
-            post: {}
-          }
-        }
-      }
-    },
-
-    // Performs rewrites based on rev and the useminPrepare configuration
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        assetsDirs: ['<%= yeoman.dist %>']
-      }
-    },
-
     // The following *-min tasks produce minified files in the dist folder
     cssmin: {
-      dist : {
-        options: {
-          root: '<%= yeoman.app %>'
-        },
-      },
       distBootAng : {
         options: {
           banner: '/* Bootang minified css file */'
         },
         files: {
-          '<%= yeoman.distBootAng %>/dist/bootang.min.css': ['<%= yeoman.app %>/styles/bootang-*.css']
+          '<%= yeoman.dist %>/bootang.min.css': ['<%= yeoman.src %>/styles/bootang-*.css']
         }
       }
     },
@@ -247,7 +115,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= yeoman.src %>/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -258,26 +126,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= yeoman.src %>/images',
           src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
         }]
       }
     },
@@ -298,9 +149,9 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           src: [
-            '<%= yeoman.app %>/scripts/directives/*.js',
-            '<%= yeoman.app %>/tmp/templates/*.js',
-            '<%= yeoman.app %>/scripts/bootang.js'
+            '<%= yeoman.src %>/scripts/directives/*.js',
+            '<%= yeoman.src %>/tmp/templates/*.js',
+            '<%= yeoman.src %>/scripts/bootang.js'
           ],
           dest: '<%= yeoman.distBootAng %>/tmp'
         }]
@@ -320,7 +171,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%= yeoman.src %>',
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
@@ -337,17 +188,9 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }]
       },
-      distBootangTestAppJs : {
-        src : '<%= yeoman.distBootAng %>/dist/bootang.min.js',
-        dest : '<%= yeoman.app %>/scripts/bootang.min.js',
-      },
-      distBootangTestAppCss : {
-        src : '<%= yeoman.distBootAng %>/dist/bootang.min.css',
-        dest : '<%= yeoman.app %>/styles/bootang.min.css',
-      },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
+        cwd: '<%= yeoman.src %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
@@ -370,7 +213,7 @@ module.exports = function (grunt) {
 
     ngtemplates:  {
       app:        {
-        cwd : '<%= yeoman.app %>',
+        cwd : '<%= yeoman.src %>',
         src:      'views/directives/*.tpl',
         dest:     '<%= yeoman.distBootAng %>/tmp/templates/templates.js',
         options:      {
@@ -391,7 +234,7 @@ module.exports = function (grunt) {
     //     files: {
     //       '<%= yeoman.dist %>/styles/main.css': [
     //         '.tmp/styles/{,*/}*.css',
-    //         '<%= yeoman.app %>/styles/{,*/}*.css'
+    //         '<%= yeoman.src %>/styles/{,*/}*.css'
     //       ]
     //     }
     //   }
@@ -406,7 +249,7 @@ module.exports = function (grunt) {
       // }
       distBootAng : {
         files : {
-          '<%= yeoman.distBootAng %>/dist/bootang.min.js' : [
+          '<%= yeoman.dist %>/bootang.min.js' : [
             '<%= yeoman.distBootAng %>/tmp/app/scripts/bootang.js',
             '<%= yeoman.distBootAng %>/tmp/templates/*.js',
             '<%= yeoman.distBootAng %>/tmp/app/scripts/directives/*.js',
@@ -430,28 +273,6 @@ module.exports = function (grunt) {
     }
   });
 
-
-  grunt.registerTask('serve', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
-
-    grunt.task.run([
-      'clean:server',
-      'bowerInstall',
-      'concurrent:server',
-      'autoprefixer',
-      'less',
-      'connect:livereload',
-      'watch'
-    ]);
-  });
-
-  grunt.registerTask('server', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-  });
-
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
@@ -460,39 +281,15 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'bowerInstall',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngmin:dist',
-    'copy:dist',
-    'cdnify',
-    'cssmin:dist',
-    'uglify',
-    'rev',
-    'usemin',
-    'htmlmin'
-  ]);
-
-  grunt.registerTask('buildBootAngServe', [ // builds bootang.min.js, copies it into app and runs server
+  grunt.registerTask('buildBootAng', [ // builds bootang.min.js and bootang.min.css
     'clean:distBootAng', // clean dist_bootang/tmp/*
+    'clean:dist', // clean dist
     'autoprefixer', // default autoprefixer for css
     'ngtemplates', // take all templates and create .js from them inside tmp/templates (it will be used later for uglify and ngmin)
     'ngmin:distBootAng', // prepare ng files for uglify
     'uglify:distBootAng', // uglify js
     'cssmin:distBootAng', // minify css
-    'clean:distBootAng', // clean dist_bootang/dist/* and dist_bootang/tmp/*
-    'copy:distBootangTestAppJs', // copy bootang.min.js into testing app
-    'copy:distBootangTestAppCss', // copy bootang.min.css into testing app
-    'connect:livereload',
-    'watch'
-  ]);
-
-  grunt.registerTask('buildTemplates', [
-    'ngtemplates'
+    'clean:distBootAng' // clean dist_bootang/dist/* and dist_bootang/tmp/*
   ]);
 
   grunt.registerTask('default', [
