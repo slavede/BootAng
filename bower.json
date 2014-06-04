@@ -1,6 +1,6 @@
 {
   "name": "BootAng",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": ["/dist/bootang.min.css", "/dist/bootang.min.js"],
   "ignore" : ["*", "!/dist/bootang.min.css", "!/dist/bootang.min.js"],
   "dependencies": {
