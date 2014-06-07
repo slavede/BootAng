@@ -11,6 +11,14 @@ Via bower:
 
 `bower install bootang --save`
 
+Put this inside your html:
+
+`<link rel="stylesheet" href="bower_components/bootang/dist/bootang.min.css" />`
+
+`<script src="bower_components/bootang/dist/bootang.min.js"></script>` (this has to be loaded after AngularJS and Bootstrap)
+
+
+
 # Components
 
 ## Menu
