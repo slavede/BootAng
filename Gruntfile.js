@@ -224,6 +224,16 @@ module.exports = function (grunt) {
         }
       }
     },
+    less : {
+      distBootAng : {
+        options: {
+          cleancss: true,
+        },
+        files: {
+          '<%= yeoman.dist %>/bootang.min.css': ['<%= yeoman.src %>/less/bootang-main.less']
+        }
+      }
+    },
 
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
@@ -288,7 +298,8 @@ module.exports = function (grunt) {
     'ngtemplates', // take all templates and create .js from them inside tmp/templates (it will be used later for uglify and ngmin)
     'ngmin:distBootAng', // prepare ng files for uglify
     'uglify:distBootAng', // uglify js
-    'cssmin:distBootAng', // minify css
+    // 'cssmin:distBootAng', // minify css
+    'less:distBootAng',
     'clean:distBootAng' // clean dist_bootang/dist/* and dist_bootang/tmp/*
   ]);
 
