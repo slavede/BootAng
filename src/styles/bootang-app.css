@@ -1,4 +1,4 @@
-/*Empty CSS*/ 
-.test-class {
-	background-color: red;
+.navbar-collapse.bootang-menu-dropdown {
+	overflow-x: hidden;
+	overflow-y: hidden; 
 }

@@ -7,13 +7,13 @@
 		<span class='icon-bar'></span>
 	</button>
 
-	<div class='collapse navbar-collapse navHeaderCollapse'>
+	<div class='collapse navbar-collapse navHeaderCollapse bootang-menu-dropdown'>
 		<ul class='nav navbar-nav' ng-repeat='menuEntry in bootangOptions.items'>
 			<li ng-if='menuEntry.type == "url"'>
 				<a href='{{menuEntry.url}}'>{{menuEntry.display}}</a>
 			</li>
 			<li ng-if='menuEntry.type == "dropdown"' class='dropdown'>
-				<a ng-click='' class='btn btn-navbar dropdown-toggle' data-toggle='dropdown'>{{menuEntry.display}} <b class='caret'></b></a>
+				<a ng-click='' class='btn btn-navbar dropdown-toggle pull-left' data-toggle='dropdown'>{{menuEntry.display}} <b class='caret'></b></a>
 				<ul class='dropdown-menu'>
 					<li ng-repeat='submenuEntry in menuEntry.items' ng-class='{divider:submenuEntry.type == "divider"}'>
 						<a ng-if='submenuEntry.type == "url"' href='{{submenuEntry.url}}'>{{submenuEntry.display}}</a>
