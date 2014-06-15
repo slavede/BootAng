@@ -7,7 +7,7 @@ This library is used for getting simple AngularJS directives which are wrapped a
 
 # Contents
 
-* [Installation](https://github.com/slavede/BootAng#installation)
+* [Installation](#installation)
 * [Components](https://github.com/slavede/BootAng#components)
 	* [BootAng Menu](https://github.com/slavede/BootAng#menu)
 	* [Bootang Popover](https://github.com/slavede/BootAng#popover)
