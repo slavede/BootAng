@@ -5,6 +5,13 @@ Angular Directives  around Bootstrap components for less pain.
 
 This library is used for getting simple AngularJS directives which are wrapped around the Bootstrap3.
 
+# Contents
+
+* [Installation](https://github.com/slavede/BootAng#installation)
+* [Components](https://github.com/slavede/BootAng#components)
+	* [BootAng Menu](https://github.com/slavede/BootAng#menu)
+	* [Bootang Popover](https://github.com/slavede/BootAng#popover)
+
 # Installation
 
 Via bower:
