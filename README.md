@@ -108,17 +108,17 @@ Assign class 'bootang-popover' to element to which you want to attach it.
 
 Directive accepts three properties.
 
-bootang-options - default bootstrap options for popover described here http://getbootstrap.com/javascript/#popovers-usage
-bootang-methods - json with following properties:
-	show - when set to true, displays popover
-	hide - when set to true, hides popover
-	toggle - when set to true, toggles popover
-	destroy - when set to true, closes and removes popover from DOM
-bootang-events - callbacks being triggered when popover is shown or hidden, can be:
-	show - called just before showing popover
-	shown - called just after showing popover
-	hide - called just before hiding popover
-	hidden - called just after hiding popover
+* bootang-options - default bootstrap options for popover described here http://getbootstrap.com/javascript/#popovers-usage
+* bootang-methods - json with following properties:
+	* show - when set to true, displays popover
+	* hide - when set to true, hides popover
+	* toggle - when set to true, toggles popover
+	* destroy - when set to true, closes and removes popover from DOM
+* bootang-events - callbacks being triggered when popover is shown or hidden, can be:
+	* show - called just before showing popover
+	* shown - called just after showing popover
+	* hide - called just before hiding popover
+	* hidden - called just after hiding popover
 
 <pre>
 	$scope.bootangOptions = {
@@ -129,7 +129,7 @@ bootang-events - callbacks being triggered when popover is shown or hidden, can 
 	
 	$scope.bootangEvents = {};
 	$scope.bootangEvents.show = function(e) {
-		alert('Shown popover');
+		alert('I will show popover');
 	};
 	
 	$scope.bootangMethods = {};
