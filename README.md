@@ -90,3 +90,64 @@ where:
 * topMenu - if true, it will make menu without rounded corners
 * inverse - bootstrap coloring
 * items - list of menu entries, it can be type "dropdown" (submenu) or "url" (link)
+ 
+
+## Popover
+
+### Demo
+
+![BootAng Popover](http://s7.postimg.org/97c2zisyz/popover_title.png)
+
+### Usage - HTML
+
+Assign class 'bootang-popover' to element to which you want to attach it.
+
+`<span class='bootang-popover' bootang-options='bootangOptions' bootang-methods='bootangMethods' bootang-events='bootangEvents'>My Span for Popover</span>`
+
+### Usage - Controller
+
+Directive accepts three properties.
+
+bootang-options - default bootstrap options for popover described here http://getbootstrap.com/javascript/#popovers-usage
+bootang-methods - json with following properties:
+	show - when set to true, displays popover
+	hide - when set to true, hides popover
+	toggle - when set to true, toggles popover
+	destroy - when set to true, closes and removes popover from DOM
+bootang-events - callbacks being triggered when popover is shown or hidden, can be:
+	show - called just before showing popover
+	shown - called just after showing popover
+	hide - called just before hiding popover
+	hidden - called just after hiding popover
+
+<pre>
+	$scope.bootangOptions = {
+		placement : 'bottom',
+		title : 'My Popover Title',
+		content : 'This will be conent of my popover, you know?'
+	};
+	
+	$scope.bootangEvents = {};
+	$scope.bootangEvents.show = function(e) {
+		alert('Shown popover');
+	};
+	
+	$scope.bootangMethods = {};
+	
+	// this can be event for ng-click on some button
+	$scope.showPopover = function() {
+		$scope.bootangMethods.show = true;
+	};
+	// this can be event for ng-click on some button
+	$scope.hidePopover = function() {
+		$scope.bootangMethods.hide = true;
+	};
+	// this can be event for ng-click on some button
+	$scope.togglePopover = function() {
+		$scope.bootangMethods.toggle = true;
+	};
+	// this can be event for ng-click on some button
+	$scope.destroyPopover = function() {
+		$scope.bootangMethods.destroy = true;
+	};
+</pre>
