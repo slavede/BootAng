@@ -278,7 +278,8 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'karma.conf.js',
-        singleRun: true
+        singleRun: true,
+        browsers: ['PhantomJS']
       }
     }
   });
@@ -292,6 +293,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('buildBootAng', [ // builds bootang.min.js and bootang.min.css
+    'karma:unit',
     'clean:distBootAng', // clean dist_bootang/tmp/*
     'clean:dist', // clean dist
     'autoprefixer', // default autoprefixer for css
